@@ -1,0 +1,29 @@
+﻿@model List<Nike_vn.Models.Order>
+
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Order Id</th>
+            <th scope="col">User Id</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.UserId</td>
+                <td>@item.Total.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

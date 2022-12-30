@@ -1,0 +1,80 @@
+﻿@model List<Nike_vn.Models.Cart>
+@{
+    ViewBag.Title = "Cart. Nike.Store";
+    Layout = "~/Views/Shared/_LayoutPageShop.cshtml";
+}
+
+<div class="row row-cols-1 row-cols-md-2 mt-4">
+    <div class="col">
+        <p class="h4">Bag</p><br />
+        <div class="mt-3">
+            @if (Model.Count() > 0)
+            {
+                <table class="table">
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            string[] imgNameArr = item.Product.ProductName.Split(' ');
+                            string imgName = String.Join("", imgNameArr);
+                            ViewBag.TotalMoney += (item.Product.ProductPrice * item.Quantity);
+                            ViewBag.PricePerProduct = item.Product.ProductPrice * item.Quantity;
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img class="img-fluid" src="~/Images/Nike/@item.Product.ProductGender.ProductGenderName/@item.Product.Apparel.ApparelName/@imgName-0.jpeg" />
+                                        </div>
+                                        <div class="col-10">
+                                            <p class="h6 position-relative">@item.Product.ProductName <span class="h6 position-absolute end-0">@ViewBag.PricePerProduct.ToString("C")</span></p>
+                                            <p>@item.Product.ProductGender.ProductGenderName's @item.Product.Apparel.ApparelName</p>
+                                            <p>Size: @item.ProductSize.ProductSizeName &nbsp;&nbsp;Quantity: @item.Quantity</p><br />
+                                            <form action="/account/cartremove" method="post">
+                                                <input type="hidden" name="ProductId" value="@item.ProductId" />
+                                                <input type="hidden" name="ProductSizeId" value="@item.ProductSizeId" />
+                                                <button type="submit" class="btn w-50"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }else
+            {
+                <p class="h4 text-center">You Don't have any item in bag</p>
+            }
+        </div>
+    </div>
+    <div class="col">
+        <p class="h4">Summary</p>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="h6 position-relative">Subtotal<span class="h6 position-absolute end-0">@ViewBag.TotalMoney.ToString("C")</span></p><br />
+                        <p class="h6 position-relative">Estimated Shipping & Handling<span class="h6 position-absolute end-0">Free</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                        <p class="h6 position-relative">Total<span class="h6 position-absolute end-0 fw-bold">@ViewBag.TotalMoney.ToString("C")</span></p>
+                    </td>
+                </tr>
+                @if (Model.Count() > 0)
+                {
+                    <tr>
+                        <td>
+                            <form action="/Account/CheckOut" method="post">
+                                <input type="hidden" name="UserId" value="@ViewBag.userId" />
+                                <input type="hidden" name="Total" value="@ViewBag.TotalMoney" />
+                                <button type="submit" class="btn btn-dark w-100 rounded-pill p-3">Check Out</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

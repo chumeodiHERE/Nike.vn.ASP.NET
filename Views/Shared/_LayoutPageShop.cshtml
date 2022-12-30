@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/custom-font.css" rel="stylesheet" />
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/video-js.css" rel="stylesheet" />
+    <link href="~/Content/sidebars.css" rel="stylesheet" />
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.6.1.js"></script>
+    <script src="~/Scripts/video.js"></script>
+    <script src="~/Scripts/sidebars.js"></script>
+    <link rel="icon" type="image/x-icon" href="~/Images/Global-Images/nike-favicon.png" />
+    <title>@ViewBag.Title</title>
+
+    <style>
+        p, a {
+            font-family: FuturaMediumBt !important;
+        }
+
+        .h2 {
+            font-family: futura !important;
+        }
+
+        .megamenu {
+            position: static;
+        }
+
+        .megamenu .dropdown-menu {
+            background: none;
+            border: none;
+            width: 100%;
+        }
+
+        video.video-js {
+            width: 100%;
+            height: auto;
+        }
+
+        .top-80 {
+            top: 80% !important
+        }
+
+        .top-90 {
+            top: 90% !important
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 30vw;
+            object-fit: cover;
+        }
+
+        .page-link.active, .active > .page-link {
+            z-index: 3 !important;
+            color: #fff !important;
+            background-color: #000 !important;
+            border-color: #000 !important;
+        }
+
+        .dropdown-menu.account-menu {
+            z-index: 1050 !important;
+        }
+    </style>
+</head>
+<body>
+    <nav id="jordan-header" class="navbar navbar-expand-lg navbar-light p-0" style="background-color: rgb(229, 229, 229)">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/nike/index">
+                <img src="~/Images/Global-Images/jump-man.png" height="24" />
+            </a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" aria-current="page" href="#" style="font-family: FuturaLightfont !important">Help</a>
+                </li>
+                <li class="nav-item pt-2" style="font-family: FuturaLightfont !important">|</li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link mx-2 active" role="button" href="#" id="dropdownMenuAccount" style="font-family: FuturaLightfont !important" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-truncate">Hi, @User.Identity.Name</span>
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu account-menu" aria-labelledby="dropdownMenuAccount">
+                            <li><a class="dropdown-item" href="/account/myprofile">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/account/cart">Cart</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/account/signout">Sign Out</a></li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" href="/account/signin" style="font-family: FuturaLightfont !important">Login</a>
+                    </li>
+                    <li class="nav-item pt-2" style="font-family: FuturaLightfont !important">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" href="/account/signup" style="font-family: FuturaLightfont !important">Sign Up</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light p-1 sticky-top bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/nike/index">
+                <img src="~/Images/Global-Images/nike.png" height="32" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown megamenu">
+                        <a id="megamneuMen" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link mx-2 active">Men</a>
+                        <div aria-labelledby="megamneuMen" class="dropdown-menu animate__animated animate__fadeIn border-0 p-0 m-0">
+                            <div class="container-fluid">
+                                <div class="row bg-white rounded-0 m-0 shadow-sm">
+                                    <div class="col-lg-7 col-xl-8">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Shoes</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="/men/allshoes" class="nav-link text-small pb-0">All Shoes</a></li>
+                                                        <li class="nav-item"><a href="/men/footballshoes" class="nav-link text-small pb-0">Football</a></li>
+                                                        <li class="nav-item"><a href="/men/runningshoes" class="nav-link text-small pb-0 ">Running</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Basketball</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Golf</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Top</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">All top</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">T-Shirts</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Hoodies and Sweatshirts</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Jackets</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Bottom</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">All Bottom</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Shorts</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Pants and Leggings</a></li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Accessories</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Caps</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Socks</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Bags</a></li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block" style="background: center center url('/Images/Global-Images/nike-man.jpeg')no-repeat; background-size: cover;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown megamenu">
+                        <a id="megamneuWomen" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link mx-2 active">Women</a>
+                        <div aria-labelledby="megamneuWomen" class="dropdown-menu animate__animated animate__fadeIn border-0 p-0 m-0">
+                            <div class="container-fluid">
+                                <div class="row bg-white rounded-0 m-0 shadow-sm">
+                                    <div class="col-lg-7 col-xl-8">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Shoes</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0">All Shoes</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Football</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Running</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Basketball</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Golf</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Top</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">All top</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">T-Shirts</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Hoodies and Sweatshirts</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Jackets</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Bottom</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">All Bottom</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Shorts</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Pants and Leggings</a></li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Accessories</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Caps</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Socks</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Bags</a></li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block" style="background: center center url('/Images/Global-Images/nike-women.jpeg')no-repeat; background-size: cover;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown megamenu">
+                        <a id="megamneuKids" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link mx-2 active">Kids</a>
+                        <div aria-labelledby="megamneuKids" class="dropdown-menu animate__animated animate__fadeIn border-0 p-0 m-0">
+                            <div class="container-fluid">
+                                <div class="row bg-white rounded-0 m-0 shadow-sm">
+                                    <div class="col-lg-7 col-xl-8">
+                                        <div class="p-4">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Shoes</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0">All Shoes</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Running</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Basketball</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Top</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">All top</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">T-Shirts</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Bottom</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">All Bottom</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Shorts</a></li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-6 mb-4">
+                                                    <h6 class="font-weight-bold">Accessories</h6>
+                                                    <ul class="list-unstyled">
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Caps</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Socks</a></li>
+                                                        <li class="nav-item"><a href="" class="nav-link text-small pb-0 ">Bags</a></li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                        <li class="space">&nbsp;</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-xl-4 px-0 d-none d-lg-block" style="background: center center url('/Images/Global-Images/nike-kids.jpeg')no-repeat; background-size: cover;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mt-1 d-lg-inline-flex">
+                    <li class="nav-item d-none d-lg-inline-flex">
+                        <form action="/allitems/index" method="post">
+                            <div class="input-group rounded-pill">
+                                <button class="btn border-0" type="submit" id="search-button" style="border-bottom-left-radius:50rem !important; border-top-left-radius:50rem !important; background-color:rgb(245, 245, 245)">
+                                    <i class="fa fa-search" aria-hidden="true" style="font-size:16px"></i>
+                                </button>
+                                <input type="search" name="search" id="search" value="@ViewBag.SearchContaint" class="form-control border-0" placeholder="Search" aria-describedby="search-button" style="border-bottom-right-radius: 50rem !important; border-top-right-radius: 50rem !important; background-color: rgb(245, 245, 245)">
+                            </div>
+                        </form>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-dark" href="/account/cart">
+                                <i class="fa fa-shopping-bag" aria-hidden="true" style="font-size:16px"></i>
+                                <p class="IconDescription" style="display:inline"> Bag</p>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item pt-5 IconDescription">
+                        <a class="nav-link mx-2 text-dark" href="" target="blank">
+                            <img src="~/Images/Global-Images/jump-man.png" height="28" />
+                            <p class="pt-5 IconDescription" style="display:inline"> Jordan</p>
+                        </a>
+                    </li>
+                    @if (User.Identity.IsAuthenticated == false)
+                    {
+                        <li class="nav-item pt-5 IconDescription">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 text-center pb-5">
+                                        <a class="btn btn-dark rounded-pill ms-4" href="/account/signin" role="button">Login</a>
+                                        <a class="btn btn-light rounded-pill ms-4" href="/account/signup" role="button">Sign Up</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown IconDescription">
+                            <a class="nav-link mx-2 active" role="button" href="#" id="dropdownMenuAccount" style="font-family: FuturaLightfont !important" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="text-truncate">Hi, @User.Identity.Name</span>
+                                <i class="fa fa-user-o" aria-hidden="true"></i>
+                            </a>
+                            <ul class="dropdown-menu account-menu" aria-labelledby="dropdownMenuAccount">
+                                <li><a class="dropdown-item" href="/account/myprofile">Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Cart</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/account/signout">Sign Out</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <script>
+                    function onresize() {
+                        if ($(window).width() <= 1000) {
+                            $(".IconDescription").show();
+                            $("#jordan-header").hide();
+                            $(".space").hide();
+                        } else {
+                            $(".IconDescription").hide();
+                            $("#jordan-header").show();
+                            $(".space").show();
+                        }
+                    }
+                    $(window).resize(onresize);
+                    onresize();
+                </script>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>

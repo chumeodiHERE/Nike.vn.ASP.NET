@@ -1,0 +1,89 @@
+﻿@model Nike_vn.ViewModel.SignUpVM
+@{
+    ViewBag.Title = "Welcome to Nike - Sign Up";
+    Layout = "~/Views/Shared/_LayoutPageAccount.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row m-4">
+        <div class="col-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <img class="mx-auto" width="35" src="~/Images/Global-Images/nike.png" />
+            <p class="h4 text-uppercase">become a nike member</p>
+            <p id="textNike" class="text-break mx-auto">Create your Nike Member profile and get first access to the very best of Nike products, inspiration and community.</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-spare">&nbsp;</div>
+        <div class="frm-containt">
+            @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    @Html.TextBoxFor(temp => temp.UserName, new { type = "email", placeholder = "Email address", @class = "form-control w-75 mx-auto" })
+                    <p class="form-text w-75 mx-auto">@Html.ValidationMessageFor(temp => temp.UserName)</p>
+                </div>
+                <div class="mb-3">
+                    @Html.PasswordFor(temp => temp.Password, new { placeholder = "Password", @class = "form-control w-75 mx-auto" })
+                    <p class="form-text w-75 mx-auto">@Html.ValidationMessageFor(temp => temp.Password)</p>
+                </div>
+                <div class="mb-3">
+                    @Html.TextBoxFor(temp => temp.FristName, new { placeholder = "First Name", @class = "form-control w-75 mx-auto" })
+                    <p class="form-text w-75 mx-auto">@Html.ValidationMessageFor(temp => temp.FristName)</p>
+                </div>
+                <div class="mb-3">
+                    @Html.TextBoxFor(temp => temp.LastName, new { placeholder = "Last Name", @class = "form-control w-75 mx-auto" })
+                    <p class="form-text w-75 mx-auto">@Html.ValidationMessageFor(temp => temp.LastName)</p>
+                </div>
+                <div class="mb-3">
+                    <input name="BirthDay" type="date" class="form-control w-75 mx-auto" aria-describedby="datePicDescribe" />
+                    <div id="datePicDescribe" class="form-text w-75 mx-auto">Get a Nike Member Reward every year on your Birthday.</div>
+                </div>
+                <div class="mb-3">
+                    <select name="Country" class="form-select w-75 mx-auto">
+                        <option selected value="Viet Nam">Viet Nam</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                    </select>
+                </div>
+                <div class="mb-3 w-100 mx-auto text-center">
+                    <input type="radio" class="btn-check" name="Gender" id="option1" autocomplete="off" value="Male" checked>
+                    <label class="btn btn-outline-dark w-25 me-2" for="option1">Male</label>
+                    <input type="radio" class="btn-check" name="Gender" id="option2" autocomplete="off" value="Female">
+                    <label class="btn btn-outline-dark w-25 ms-2" for="option2">Female</label>
+                </div>
+                <div class="mb-3 w-75 mx-auto text-center">
+                    <button type="submit" class="btn btn-dark w-100 text-uppercase" style="font-family: TradeGothicLTCondEighteen !important">join us</button>
+                </div>
+            }
+        </div>
+        <div class="col-spare">&nbsp;</div>
+    </div>
+    <script>
+        function onresize() {
+            if ($(window).width() <= 1000) {
+                $(".col-spare").removeClass("col-4");
+                $(".col-spare").hide();
+                $(".frm-containt").addClass("col-12");
+                $(".frm-containt").removeClass("col-4");
+
+                $("#textNike").removeClass("w-25");
+                $("#textNike").addClass("w-75");
+            } else {
+                $(".col-spare").addClass("col-4");
+                $(".col-spare").show();
+                $(".frm-containt").addClass("col-4");
+                $(".frm-containt").removeClass("col-12");
+
+                $("#textNike").removeClass("w-75");
+                $("#textNike").addClass("w-25");
+            }
+        }
+        $(window).resize(onresize);
+        onresize();
+    </script>
+</div>
+
+
+

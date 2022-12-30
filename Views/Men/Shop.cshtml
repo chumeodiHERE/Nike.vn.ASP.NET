@@ -1,0 +1,108 @@
+﻿@model List<Nike_vn.Models.Product>
+@{
+    ViewBag.Title = ViewBag.Heading;
+    Layout = "~/Views/Shared/_LayoutPageShop.cshtml";
+}
+
+<div class="row">
+    <div id="sidebarShop">
+        <div class="flex-shrink-0 p-3 bg-white">
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Sort By
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="/@ViewBag.ControlName/@ViewBag.ActionName/highlow" class="link-dark rounded">Price: High - Low</a></li>
+                            <li><a href="/@ViewBag.ControlName/@ViewBag.ActionName/lowhigh" class="link-dark rounded">Price: Low - High</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        Shop by Price
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="/@ViewBag.ControlName/@ViewBag.ActionName/50-100" class="link-dark rounded">$50 - $100</a></li>
+                            <li><a href="/@ViewBag.ControlName/@ViewBag.ActionName/100-150" class="link-dark rounded">$100 - $150</a></li>
+                            <li><a href="/@ViewBag.ControlName/@ViewBag.ActionName/over-150" class="link-dark rounded">Over $150</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="productContain">
+        <div class="row">
+            <div class="col-12"><p class="h3">@ViewBag.Heading (@ViewBag.QuantityProDuct)</p></div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                string[] imgNameArr = item.ProductName.Split(' ');
+                string imgName = String.Join("", imgNameArr);
+                <div class="col">
+                    <a class="nav-link" href="/detail/index/@item.ProductId">
+                        <div class="card border-0">
+                            <img src="~/Images/Nike/@item.ProductGender.ProductGenderName/@item.Apparel.ApparelName/@imgName-0.jpeg" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.ProductName</h5>
+                                <p class="card-text text-secondary">@item.ProductGender.ProductGenderName's @item.Category.CategoryName</p>
+                                <p class="mt-2 card-text">@item.ProductPrice.Value.ToString("C")</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="pagination justify-content-end">
+                    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                    {
+                        if (i + 1 == ViewBag.Page)
+                        {
+                            <li class="page-item">
+                                <a class="page-link active" href="/@ViewBag.ControlName/@ViewBag.ActionName?page=@(i + 1)">
+                                    @(i + 1)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link text-dark" href="/@ViewBag.ControlName/@ViewBag.ActionName?page=@(i + 1)">
+                                    @(i + 1)
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function onresize() {
+            if ($(window).width() <= 1000) {
+                $("#sidebarShop").removeClass("col-2");
+                $("#sidebarShop").hide();
+
+                $("#productContain").addClass("col-12")
+                $("#productContain").removeClass("col-10")
+            } else {
+                $("#sidebarShop").addClass("col-2");
+                $("#sidebarShop").show();
+
+                $("#productContain").addClass("col-10")
+                $("#productContain").removeClass("col-12")
+            }
+        }
+        $(window).resize(onresize);
+        onresize();
+    </script>
+</div>
+
+

@@ -1,0 +1,66 @@
+﻿@model Nike_vn.ViewModel.SignInVM
+@{
+    ViewBag.Title = "Welcome to Nike - Sign In";
+    Layout = "~/Views/Shared/_LayoutPageAccount.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row m-4">
+        <div class="col-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <img class="mx-auto" width="35" src="~/Images/Global-Images/nike.png" />
+            <p class="h4 w-25 text-uppercase text-break mx-auto">
+                YOUR ACCOUNT FOR EVERYTHING NIKE
+            </p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-spare">&nbsp;</div>
+        <div class="frm-containt">
+            @using (Html.BeginForm("SignIn", "Account", FormMethod.Post))
+            {
+                <div class="mb-3">
+                    @Html.TextBoxFor(temp => temp.UserName, new { type = "email", placeholder = "Email address", @class = "form-control w-75 mx-auto" })
+                    <p class="form-text w-75 mx-auto">@Html.ValidationMessageFor(temp => temp.UserName)</p>
+                </div>
+                <div class="mb-3">
+                    @Html.PasswordFor(temp => temp.Password, new { placeholder = "Password", @class = "form-control w-75 mx-auto" })
+                    <p class="form-text w-75 mx-auto">@Html.ValidationMessageFor(temp => temp.Password)</p>
+                </div>
+                <div class="mb-3">
+                    <div class="w-75 ps-4">@Html.ValidationSummary()</div>
+                </div>
+                <div class="mb-3 w-75 mx-auto text-center">
+                    <button type="submit" class="btn btn-dark w-100 text-uppercase" style="font-family: TradeGothicLTCondEighteen !important">sign in</button>
+                </div>
+            }
+        </div>
+        <div class="col-spare">&nbsp;</div>
+    </div>
+    <script>
+        function onresize() {
+            if ($(window).width() <= 1000) {
+                $(".col-spare").removeClass("col-4");
+                $(".col-spare").hide();
+                $(".frm-containt").addClass("col-12");
+                $(".frm-containt").removeClass("col-4");
+
+                $("#textNike").removeClass("w-25");
+                $("#textNike").addClass("w-75");
+            } else {
+                $(".col-spare").addClass("col-4");
+                $(".col-spare").show();
+                $(".frm-containt").addClass("col-4");
+                $(".frm-containt").removeClass("col-12");
+
+                $("#textNike").removeClass("w-75");
+                $("#textNike").addClass("w-25");
+            }
+        }
+        $(window).resize(onresize);
+        onresize();
+    </script>
+</div>
+

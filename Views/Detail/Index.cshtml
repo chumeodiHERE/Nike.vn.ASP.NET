@@ -1,0 +1,54 @@
+﻿@model Nike_vn.Models.Product
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageShop.cshtml";
+}
+
+<div class="row mt-4">
+    <div id="productImg" class="col-12 col-md-8">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+            @for (int i = 0; i <= 3; i++)
+            {
+                string[] imgNameArr = Model.ProductName.Split(' ');
+                string imgName = String.Join("", imgNameArr);
+                string urlImg = imgName + "-" + i + ".jpeg";
+                <div class="col">
+                    <img class="img-fluid" src="~/Images/Nike/@Model.ProductGender.ProductGenderName/@Model.Apparel.ApparelName/@urlImg" />
+                </div>
+            }
+        </div>
+    </div>
+    <div id="productDetail" class="col-12 col-md-4">
+        <p class="h3">@Model.ProductName</p>
+        <p class="h5">@Model.ProductGender.ProductGenderName's @Model.Category.CategoryName</p>
+        <p class="h6 mt-3">Select Size</p>
+        <form action="/account/cartadd" method="post">
+            <input type="hidden" name="ProductId" value="@Model.ProductId" />
+            <div class="row row-cols-2 row-cols-md-2 g-3">
+                @if (ViewBag.LstCount > 0)
+                {
+                    foreach (var item in ViewBag.StoreLst)
+                    {
+                        if (item.Quantity > 0)
+                        {
+                            <div class="col">
+                                <input type="radio" class="btn-check" name="ProductSizeId" value="@item.ProductSizeId" id="@item.ProductSizeId" autocomplete="off">
+                                <label class="btn btn-outline-dark w-100 mx-auto" for="@item.ProductSizeId">@item.ProductSize.ProductSizeName</label>
+                            </div>
+                        }
+                    }
+                    <div class="mt-4 w-100 mx-auto text-center">
+                        <button type="submit" class="btn btn-dark w-100 rounded-pill p-3">Add to Bag</button>
+                    </div>
+                }
+                else
+                {
+                    <p class="h6 mt-3">Product Coming Soon</p>
+                }
+            </div>
+            
+        </form>
+        <p class="h6 text-break lh-base mt-3 ms-2" style="font-family: FuturaLightfont !important ">@Model.ProductDescription</p>
+    </div>
+</div>
+

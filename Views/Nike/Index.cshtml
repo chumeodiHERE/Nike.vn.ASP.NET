@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Nike - Just Do It. Nike.vn";
+    Layout = "~/Views/Shared/_LayoutPageGlobal.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 position-relative">
+            <img id="nike-fc-bg" class="img-fluid" src="~/Images/Nike/HomePage/nike-fc-background.jpeg" />
+            <video id="fstVideo" class="video-js" width="400" muted autoplay playsinline style="pointer-events: none">
+                <source src="~/Videos/Nike/HomePage/nike-fc-video.mp4" type="video/mp4" />
+            </video>
+            <button id="volumeButton" onclick="toggleMute()" type="button" class="position-absolute w-10 h-auto border-0" style="background-color: unset !important; left: 5% !important"><i id="volumIcon" class="fa fa-volume-off" aria-hidden="true" style="font-size: 2rem; color:white"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="h2 display-1 text-uppercase d-block">welcome to Nike fc</p>
+            <p>We’re not a club. We’re a community. Create the future of the game with us and get in on boot drops, fresh looks, group chats and more.</p>
+            <a class="btn btn-dark p-2 rounded-pill" role="button" href="#">Gear Up</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12"><p class="h3">Basketball</p></div>
+        <div class="col-12">
+            <img class="img-fluid" src="~/Images/Nike/HomePage/nike-nba-basketball.jpeg" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="h2 display-1 text-uppercase d-block">basketball by you</p>
+            <p>Street style meets team pride with your Nike NBA Clothing. Pair your favourite team's clothing with your own unique look for next-level NBA style.</p>
+            <a class="btn btn-dark p-2 rounded-pill" role="button" href="#">Shop Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12"><p class="h3">Just Start Running</p></div>
+    </div>
+    <div class="row">
+        <div class="nike-run-post">
+            <a class="nav-link" href="#">
+                <img class="img-fluid" src="~/Images/Nike/HomePage/nike-running-post1.jpeg" />
+                <h4>Apparel</h4>
+            </a>
+        </div>
+        <div class="nike-run-post">
+            <a class="nav-link" href="#">
+                <img class="img-fluid" src="~/Images/Nike/HomePage/nike-running-post2.jpeg" />
+                <h4>Running Shoe Finder</h4>
+            </a>
+        </div>
+        <div class="nike-run-post">
+            <a class="nav-link" href="#">
+                <img class="img-fluid" src="~/Images/Nike/HomePage/nike-running-post3.jpeg" />
+                <h4>Equipment & Accessories </h4>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12 text-center p-2" style="background-image: url(/Images/Nike/HomePage/nike-golf-bg.jpeg); background-repeat: no-repeat; background-attachment: local; background-size: cover">
+            <p class="h2 display-1 text-uppercase text-light">Nike Golf</p>
+            <p class="text-light">Everything you need for any course</p>
+            <a class="btn btn-light p-2 rounded-pill" role="button" href="#">Shop Golf</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12 p-2 ps-4" style="background-image: url(/Images/Nike/HomePage/nike-membership-bg.png); background-repeat: no-repeat; background-attachment: local; background-size: cover">
+            <p class="h2 display-1 text-uppercase text-light">become a<br />membership</p>
+            <p class="text-light">Sign up for free. Join the community</p>
+            <a class="btn btn-light p-2 rounded-pill" role="button" href="#">Join Us</a>
+        </div>
+    </div>
+</div> 
+
+<div id="field" class="mt-4">
+    <div class="array">
+        <div class="element ps-3 py-5 pb-5" style="background-image: url(/Images/Nike/HomePage/nike-term-ps1.png); background-repeat: no-repeat; background-attachment: local; background-size: cover">
+            <p>&nbsp;</p><p>&nbsp;</p>
+            <p class="h4">Shopping as It Should Be</p>
+            <p class="fw-light">Free standard shipping and receiptless returns for Members.</p>
+            <p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <div class="element ps-3 py-5 pb-5" style="background-image: url(/Images/Nike/HomePage/nike-term-ps2.png); background-repeat: no-repeat; background-attachment: local; background-size: cover">
+            <p>&nbsp;</p><p>&nbsp;</p>
+            <p class="h4">60-Day Wear Tests</p>
+            <p class="fw-light">Put your new gear to the test and get 60 days to return it. Some exceptions apply.</p>
+            <p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <div class="element ps-3 py-5 pb-5" style="background-image: url(/Images/Nike/HomePage/nike-term-ps3.png); background-repeat: no-repeat; background-attachment: local; background-size: cover">
+            <p>&nbsp;</p><p>&nbsp;</p>
+            <p class="h4">Buy Online, Pick Up in Store</p>
+            <p class="fw-light">Place your Nike.com order and select “Pick up in store” at checkout.</p>
+            <p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+        <div class="element ps-3 py-5 pb-5" style="background-image: url(/Images/Nike/HomePage/nike-term-ps4.png); background-repeat: no-repeat; background-attachment: local; background-size: cover">
+            <p>&nbsp;</p><p>&nbsp;</p>
+            <p class="h4">Nike Experts</p>
+            <p class="fw-light">Nike Experts in the Nike App are here to help you find the right running shoe.</p>
+            <p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+    </div>
+</div>
+
+@* Script *@
+<script>
+
+    $(document).ready(function() {
+        $("#nike-fc-bg").hide();
+        $("#fstVideo").show();
+    });
+
+    function onresize() {
+        if ($(window).width() <= 1000) {
+            $("#volumeButton").addClass("top-80");
+            $("#volumeButton").removeClass("top-90");
+
+            $(".nike-run-post").addClass("col-12");
+            $(".nike-run-post").addClass("mt-4");
+            $(".nike-run-post").removeClass("col-4");
+
+            $("#field").removeClass("container-fluid");
+            $(".array").removeClass("row");
+            $(".element").removeClass("col-3");
+            
+        } else {
+            $("#volumeButton").addClass("top-90");
+            $("#volumeButton").removeClass("top-80");
+
+            $(".nike-run-post").removeClass("col-12");
+            $(".nike-run-post").removeClass("mt-4");
+            $(".nike-run-post").addClass("col-4");
+
+            $("#field").addClass("container-fluid");
+            $(".array").addClass("row");
+            $(".element").addClass("col-3");
+        }
+    }
+    $(window).resize(onresize);
+    onresize();
+
+    function toggleMute() {
+        var video = document.getElementById("fstVideo");
+        video.muted = !video.muted;
+        if (video.muted == true) {
+            $("#volumIcon").removeClass("fa-volume-up");
+            $("#volumIcon").addClass("fa-volume-off");
+        } else {
+            $("#volumIcon").addClass("fa-volume-up");
+            $("#volumIcon").removeClass("fa-volume-off");
+        }
+    }
+
+    var vid = document.getElementById("fstVideo");
+    vid.onended = function () {
+        $("#nike-fc-bg").addClass("animate__animated animate__fadeIn");
+        $("#nike-fc-bg").show();
+        $("#fstVideo").hide();
+        $("#volumeButton").hide();
+    };
+</script>

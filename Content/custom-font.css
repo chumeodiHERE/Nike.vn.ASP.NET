@@ -1,0 +1,29 @@
+﻿@font-face {
+    font-family: 'FuturaBold';
+    src: url('../fonts/FuturaBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'FuturaLightfont';
+    src: url('../fonts/FuturaLightfont.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'FuturaMediumBt';
+    src: url('../fonts/FuturaMediumBt.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'futura';
+    src: url('../fonts/futura.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'TradeGothicLTCondEighteen';
+    src: url('../fonts/TradeGothicLTCondEighteen.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'FuturaLight';
+    src: url('../fonts/Futura-Light.ttf') format('truetype');
+}

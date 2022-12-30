@@ -1,0 +1,60 @@
+﻿@model List<Nike_vn.Models.Product>
+@{
+    ViewBag.Title = "Products. Nike.Vn";
+    ViewBag.SearchContaint = ViewBag.Search;
+    Layout = "~/Views/Shared/_LayoutPageShop.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <p class="h5">Search results for<br /><span class="h2">@ViewBag.Search (@ViewBag.QuantityProDuct)</span></p>
+    </div>
+    <div class="col-12">
+        <div class="row row-cols-2 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                string[] imgNameArr = item.ProductName.Split(' ');
+                string imgName = String.Join("", imgNameArr);
+                <div class="col">
+                    <a class="nav-link" href="/detail/index/@item.ProductId">
+                        <div class="card border-0">
+                            <img src="~/Images/Nike/@item.ProductGender.ProductGenderName/@item.Apparel.ApparelName/@imgName-0.jpeg" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.ProductName</h5>
+                                <p class="card-text text-secondary">@item.ProductGender.ProductGenderName's @item.Category.CategoryName</p>
+                                <p class="mt-2 card-text">@item.ProductPrice.Value.ToString("C")</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <ul class="pagination justify-content-end">
+                    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                    {
+                        if (i + 1 == ViewBag.Page)
+                        {
+                            <li class="page-item">
+                                <a class="page-link active" href="/@ViewBag.ControlName/@ViewBag.ActionName?search=@ViewBag.Search&page=@(i + 1)">
+                                    @(i + 1)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link text-dark" href="/@ViewBag.ControlName/@ViewBag.ActionName?search=@ViewBag.Search&page=@(i + 1)">
+                                    @(i + 1)
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+

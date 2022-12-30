@@ -1,0 +1,18 @@
+﻿@model Nike_vn.Identity.AppUser
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_LayoutPageAccount.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row m-5">
+        <div class="col-1">
+            <img class="img-fluid rounded-circle" src="~/Images/Global-Images/nike-favicon.png" />
+        </div>
+        <div class="col-11">
+            <p class="h5 text-secondary text-start my-auto"><span class="h2 text-dark">@Model.FristName @Model.LastName</span><br />Nike Member</p>
+        </div>
+    </div>
+</div>
+
+
